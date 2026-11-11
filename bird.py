@@ -5,6 +5,7 @@ import game_framework
 
 FRAME_WIDTH = 183
 FRAME_HEIGHT = 168
+SPRITE_SHEET_HEIGHT = 506
 FRAME_COUNT = 14
 DEFAULT_BIRD_COUNT = 10
 
@@ -47,7 +48,7 @@ class Bird:
 
         self.image.clip_composite_draw(
             column * FRAME_WIDTH,
-            row * FRAME_HEIGHT,
+            SPRITE_SHEET_HEIGHT - (row + 1) * FRAME_HEIGHT,
             FRAME_WIDTH,
             FRAME_HEIGHT,
             0,
