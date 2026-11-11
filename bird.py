@@ -3,6 +3,10 @@ from pico2d import get_canvas_width, load_image
 import game_framework
 
 
+PIXELS_PER_METER = 10.0 / 0.3
+SPARROW_SPEED_KMPH = 30.0
+SPARROW_SPEED_MPS = SPARROW_SPEED_KMPH * 1000.0 / 3600.0
+
 FRAME_WIDTH = 183
 FRAME_HEIGHT = 168
 SPRITE_SHEET_HEIGHT = 506
@@ -11,8 +15,8 @@ DRAW_HEIGHT = FRAME_HEIGHT // 2
 FRAME_COUNT = 14
 DEFAULT_BIRD_COUNT = 10
 
-FLIGHT_SPEED = 120
-ANIMATION_FPS = 10
+FLIGHT_SPEED = SPARROW_SPEED_MPS * PIXELS_PER_METER
+ANIMATION_FRAMES_PER_SECOND = 10
 
 
 class Bird:
@@ -39,7 +43,8 @@ class Bird:
             self.direction = 1
 
         self.frame = (
-            self.frame + ANIMATION_FPS * game_framework.frame_time
+            self.frame
+            + ANIMATION_FRAMES_PER_SECOND * game_framework.frame_time
         ) % FRAME_COUNT
 
     def draw(self):
