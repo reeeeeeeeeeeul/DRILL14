@@ -6,6 +6,8 @@ import game_framework
 FRAME_WIDTH = 183
 FRAME_HEIGHT = 168
 SPRITE_SHEET_HEIGHT = 506
+DRAW_WIDTH = FRAME_WIDTH // 2
+DRAW_HEIGHT = FRAME_HEIGHT // 2
 FRAME_COUNT = 14
 DEFAULT_BIRD_COUNT = 10
 
@@ -28,7 +30,7 @@ class Bird:
     def update(self):
         self.x += self.direction * self.speed * game_framework.frame_time
 
-        half_width = FRAME_WIDTH / 2
+        half_width = DRAW_WIDTH / 2
         if self.x >= get_canvas_width() - half_width:
             self.x = get_canvas_width() - half_width
             self.direction = -1
@@ -55,8 +57,8 @@ class Bird:
             flip,
             self.x,
             self.y,
-            FRAME_WIDTH,
-            FRAME_HEIGHT,
+            DRAW_WIDTH,
+            DRAW_HEIGHT,
         )
 
 
